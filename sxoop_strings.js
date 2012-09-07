@@ -1,3 +1,7 @@
+//
+// A collection of string-related utility functions 
+// mostly for string building.
+//
 var SXOOP = SXOOP || {};
 SXOOP.strings = 
 {
