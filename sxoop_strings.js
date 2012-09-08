@@ -5,7 +5,7 @@
 var SXOOP = SXOOP || {};
 SXOOP.strings = 
 {
-    /* String */ fill: function(/* String */ str, /* Object */ param){},
+    /* String */ fmt: function(/* String */ str, /* Object */ param){},
     /* String */ here: function(/* String */ js){}
 };
 
@@ -40,13 +40,19 @@ SXOOP.strings =
         return result.join("\n");
     };
     var FILL_RE = /\{(.*)\}/;
-    var _fill = function(/* String */ str, /* Object */ param){
-        return str.replace(/\{([^\}]+)\}/g,function(dummy,prop){ return param[prop];});
+    var _fmt = function(/* String */ str, /* Object */ param){
+        return str.replace(/\{([^\}]+)\}/g,function(dummy,prop){ 
+           var result = prop;
+           if (typeof param[prop] != 'undefined'){
+               result = param[prop];
+           }
+           return result;
+        });
     };
     SXOOP.strings.here = function(js){
         return _here(js);
     };
-    SXOOP.strings.fill = function(str, param){
-        return _fill(str,param);
+    SXOOP.strings.fmt = function(str, param){
+        return _fmt(str,param);
     };
 }());

@@ -7,11 +7,10 @@
 <body>
 <h1></h1>
 <script type="text/javascript">
-document.write(SXOOP.strings.fill(
-  "Hello {name}\n"
-+ "your age is {age} and you are {name} !",
-{name: 'walter',age: 41}));
-document.write(SXOOP.strings.fill("<br/>" +
-"This is {0} said {1}", ["it",'Michael']));
+document.write(SXOOP.strings.fmt("Hello {name} your age is {age} and you are {name} !",
+                                 {name: 'walter',age: 41}));
+
+document.write(SXOOP.strings.fmt("It also works with arrays: This is the first element: {0} and this is the second: {1}", 
+                                 ["hello","world"]));
 </script>
 </body> </html>
