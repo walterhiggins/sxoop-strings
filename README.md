@@ -50,7 +50,32 @@ script like this one...
  
     java -jar /opt/rhino/js.jar rhere.js example.html
     
-... this will print out the processed file on standard out.    
+... this will print out the processed file on standard out. 
+The start delimiter for the long multi-line string looks like this...
+
+    /*[[
+
+... and should always be preceded by `""` (two double-quotes) or `''`
+(two single-quotes).  This is so that the javascript code will still
+be syntactically valid before it's processed.  Long multi-line strings
+can begin and end on the same line as the start and end delimiters
+like this...
+
+    var longString = ""/*[[This is
+    a very,
+    very,
+    long string]]*/;
+
+... or if you prefer, they can begin on the next line like this...
+
+    var longString = ""/*[[
+    This is
+    a very,
+    very,
+    long string
+    ]]*/;
+
+... in both cases, the longString value will be the same.
 
 [h]: http://en.wikipedia.org/wiki/Here_document
     
