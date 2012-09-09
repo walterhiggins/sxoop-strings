@@ -4,20 +4,24 @@
   </head>
   <body>
     <script type="text/javascript">
+//
+// strings can be on separate lines from the start and end
+// delimiters...
+//
 var message1 = ""/*[[
 The quick brown fox
 jumped over the lazy dog
 ]]*/;
 
 alert(message1);
-
-alert(""/*[[
-This is a string 
+//
+// or can begin or end on the same line as the start/end delimiters...
+//
+alert(""/*[[This is a string 
 that spans
 many 
 many 
-lines.
-]]*/);
+lines.]]*/);
 
 document.write(SXOOP.strings.fmt(""/*[[
 Hello {name}

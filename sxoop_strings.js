@@ -10,25 +10,32 @@ SXOOP.strings =
 };
 
 (function(){
-    var START_HERE_RE = /(.*)\/\*\[\[/;
-    var END_HERE_RE = /^\]\]\*\/(.*)/;
+    var START_HERE_RE = /(.*)\/\*\[\[(.*)/;
+    var END_HERE_RE = /(.*)\]\]\*\/(.*)/;
     var _here = function(/* String */ js) {
         var result = [];
         var lines = js.split(/\n/);
-        for (var i = 0;i < lines.length; i++){
+        var qq = function(s){
+            s = s.replace(/'/g,"\\'");
+            return "+'"+s+"\\n'";
+        };
+
+        for (var i = 0;i < lines.length; i++)
+        {
             var match = lines[i].match(START_HERE_RE);
-            if (match){
-                result.push(match[1]);
+            if (match)
+            {
+                result.push(match[1] + qq(match[2]));
                 var j = i + 1;
-                for (;j < lines.length; j++){
+                for (;j < lines.length; j++)
+                {
                     var closed = lines[j].match(END_HERE_RE);
                     if (closed){
                         i = j;
                         j = lines.length;
-                        result.push(closed[1]);
+                        result.push(qq(closed[1]) + closed[2]);
                     }else{
-                        var escaped = lines[j].replace(/'/g,"\\'");
-                        result.push("+'" + escaped +"\\n'");
+                        result.push(qq(lines[j]));
                     }
                 }
             }else{
