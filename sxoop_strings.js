@@ -10,8 +10,8 @@ SXOOP.strings =
 };
 
 (function(){
-    var START_HERE_RE = /(.*)\/\*<<(.+)/;
-
+    var START_HERE_RE = /(.*)\/\*\[\[/;
+    var END_HERE_RE = /^\]\]\*\/(.*)/;
     var _here = function(/* String */ js) {
         var result = [];
         var lines = js.split(/\n/);
@@ -19,11 +19,9 @@ SXOOP.strings =
             var match = lines[i].match(START_HERE_RE);
             if (match){
                 result.push(match[1]);
-                var endToken = match[2];
                 var j = i + 1;
-                var closePtn = new RegExp("^" + endToken + "\\*\\/(.*)");
                 for (;j < lines.length; j++){
-                    var closed = lines[j].match(closePtn);
+                    var closed = lines[j].match(END_HERE_RE);
                     if (closed){
                         i = j;
                         j = lines.length;
