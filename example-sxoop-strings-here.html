@@ -4,25 +4,25 @@
   </head>
   <body>
     <script type="text/javascript">
-var message1 = ""/*<<ENDMESG
+var message1 = ""/*[[
 The quick brown fox
 jumped over the lazy dog
-ENDMESG*/;
+]]*/;
 
 alert(message1);
 
-alert(""/*<<END
+alert(""/*[[
 This is a string 
 that spans
 many 
 many 
 lines.
-END*/);
+]]*/);
 
-document.write(SXOOP.strings.fmt(""/*<<EOT
+document.write(SXOOP.strings.fmt(""/*[[
 Hello {name}
 you are {age}
-EOT*/,
+]]*/,
 {name: 'walter',age: 'as old as time itself'}));
 
 </script>
