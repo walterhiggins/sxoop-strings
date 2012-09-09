@@ -77,6 +77,12 @@ like this...
 
 ... in both cases, the longString value will be the same.
 
+The included [rhere.js][r] Rhino script can be used as-is or included
+in an ANT or other build tool to generate expanded javascript code
+from a supplied javascript (or other) source file that includes Here
+strings.
+
+
 [h]: http://en.wikipedia.org/wiki/Here_document
-    
+[r]: https://github.com/walterhiggins/sxoop-strings/blob/master/rhere.js
     
