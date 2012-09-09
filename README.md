@@ -2,16 +2,18 @@
 
 A collection of string-building functions for Javascript.
 
-sxoop-strings adds 'Here Documents' to javascript.
+sxoop-strings adds [Here Documents][h] to javascript so that you can
+write code like this ...
 
-    var a = ""/*<<END
+    var a = ""/*[[
     Some stuff
     goes here
-    END*/;
+    ]]*/;
 
-... is the same as this...
+... and by running a simple rhino script on the source file, it will
+be turned into this...
 
-var a = ""
+    var a = ""
     + 'Some stuff\n'
     + 'goes here\n'
     ;
@@ -22,14 +24,14 @@ inside a C-style comment block so that your code editor won't
 complain. You can use Here documents anywhere you would use a regular
 javascript string. e.g. as a parameter to a function...
 
-    alert(""/*<<MESG
+    alert(""/*[[
     This is 
     a string
     that spans
     many 
     many
     lines
-    MESG*/);
+    ]]*/);
     
 Because javascript does not support 'here docs' in its syntax, the
 source file must be processed first. If you have Java on your machine
@@ -50,6 +52,6 @@ script like this one...
     
 ... this will print out the processed file on standard out.    
 
-
+[h]: http://en.wikipedia.org/wiki/Here_document
     
     
